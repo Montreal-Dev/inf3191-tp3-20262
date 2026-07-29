@@ -16,7 +16,7 @@
 from flask import Flask, jsonify, render_template, g
 from .database import Database
 
-app = Flask(__name__, static_url_path="", static_folder="static")
+app = Flask(__name__, static_folder="static", static_url_path="/static")
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -31,16 +31,21 @@ def close_connection(exception):
     if db is not None:
         db.disconnect()
 
-
+# Front-end
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
     return render_template('index.html', path=path)
 
-@app.route('/api/data', methods=['GET'])
-def data():
-    sample_data = {'message': 'Hello, SPA!'}
-    return jsonify(sample_data)
+# Back-end
+@app.route('/api/v1/animals', methods=['GET'])
+def get_animals():
+    db = get_db()
+    animals = db.get_animaux()
+    return jsonify(animals)
 
-if __name__ == '__main__':
-  app.run(debug=True)
+@app.route('/api/v1/animals/<int:animal_id>', methods=['GET'])
+def get_animal(animal_id):
+    db = get_db()
+    animal = db.get_animal(animal_id)
+    return jsonify(animal)
