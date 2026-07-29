@@ -12,13 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from flask import Flask
-from flask import render_template
-from flask import g
+
+from flask import Flask, jsonify, render_template, g
 from .database import Database
 
 app = Flask(__name__, static_url_path="", static_folder="static")
-
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -34,7 +32,15 @@ def close_connection(exception):
         db.disconnect()
 
 
-@app.route('/')
-def form():
-    # À remplacer par le contenu de votre choix.
-    return render_template('form.html')
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return render_template('index.html', path=path)
+
+@app.route('/api/data', methods=['GET'])
+def data():
+    sample_data = {'message': 'Hello, SPA!'}
+    return jsonify(sample_data)
+
+if __name__ == '__main__':
+  app.run(debug=True)
