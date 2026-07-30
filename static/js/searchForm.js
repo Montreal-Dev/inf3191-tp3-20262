@@ -20,13 +20,17 @@ function clearCards() {
 function createCard(data) {
 	console.log(data, "data");
 	const fragment = CARD_TEMPLATE.content.cloneNode(true);
-	const card = fragment.querySelector("[id='pet-card-image']");
+	const card = fragment.querySelector("[name='pet-card']");
 	const nom = fragment.querySelector("[name='pet-card-nom']");
 	const description = fragment.querySelector("[name='pet-card-description']");
 	const espece = fragment.querySelector("[name='pet-card-espece']");
 	const age = fragment.querySelector("[name='pet-card-age']");
 	const image = fragment.querySelector("[name='pet-card-image']");
+	const button = fragment.querySelector("[name='pet-card-button']");
 
+	if (card != null) {
+		card.setAttribute("id", "pet-card-" + data.id);
+	}
 	if (nom != null) {
 		nom.textContent = data.nom;
 	}
@@ -48,6 +52,9 @@ function createCard(data) {
 				image.src = "https://via.placeholder.com/150";
 			}
 		});
+	}
+	if (button != null) {
+		button.setAttribute("data-pet-id", data.id);
 	}
 	CARD_RESULTS.appendChild(fragment);
 	return fragment;

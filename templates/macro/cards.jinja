@@ -33,7 +33,7 @@
             {{ pet['age'] }} ans
           </span>
         </div>
-        <button onclick="location.href='pet/{{pet['id']}}'" class=" h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4">Voir plus ></a>
+        <button name="pet-card-button" data-pet-id="{{ pet['id'] }}" onclick="location.href = '/pet/' + event.target.dataset.petId"class=" h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4">Voir plus ></a>
       </div>
     </div>
   </div>
