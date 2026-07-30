@@ -36,6 +36,12 @@ def close_connection(exception):
 def catch_all():
     return render_template('pages/index.jinja')
 
+@app.route('/pet/<int:pet_id>')
+def get_pet(pet_id):
+    db = get_db()
+    pet = db.get_animal(pet_id)
+    return render_template('pages/pet.jinja', pet=pet)
+
 # Back-end
 @app.route('/api/v1/animals', methods=['GET'])
 def get_animals():

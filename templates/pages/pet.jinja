@@ -1,0 +1,81 @@
+<!-- extends base.html -->
+{% extends 'base.html' %}
+
+<!-- block title -->
+{% block title %} {{ pet['nom'] }} - PetFinder {% endblock %}
+
+<!-- block content -->
+{% block content %}
+<div class="flex flex-row items-center justify-between gap-4">
+	<h2 class="text-2xl font-black text-slate-900 italic">{{ pet['nom'] }}</h2>
+	<button onclick="location.href = '/'" class="h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4">Retour > </button>
+</div>
+
+<div class="relative gap-4 min-h-[50vh] max-h-[500px] rounded-t-4xl p-auto bg-white overflow-hidden border border-white animate-pulse p-1">
+	<img 
+	id="pet-img-{{ pet['id'] }}"
+	class="w-full h-full object-cover object-top opacity-0 transition-opacity duration-300 rounded-t-4xl"
+	src="{{ src }}" 
+	alt="{{ pet['nom'] }}"
+	onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+	>
+</div>
+<div class="flex flex-col gap-2 bg-white p-6 rounded-b-4xl border-t-none">
+	<h1 class="text-2xl font-black text-slate-900 italic">{{ pet['nom'] }}</h1>
+	<p class="text-xs font-bold text-slate-400 uppercase mt-1">{{ pet['description'] }}</p>
+	<table class="table-auto w-full gap-4 mt-4">
+		<tr class="w-full border-b whitespace-nowrap">
+			<th class="font-cozette sm bold">No de reference</th>
+			<th class="font-cozette xs bold" style="width: 100%"> {{ pet['id'] }} </th>
+		</tr>
+		<tr class="w-full border-b whitespace-nowrap">
+			<th class="font-cozette sm bold">Espèce</th>
+			<th class="font-cozette xs bold" style="width: 100%"> {{ pet['espece'] }} </th>
+		</tr>
+		<tr class="w-full border-b whitespace-nowrap">
+			<th class="font-cozette sm bold">Âge</th>
+			<th class="font-cozette xs bold" style="width: 100%"> {{ pet['age'] }} ans </th>
+		</tr>
+		<tr class="w-full border-b whitespace-nowrap">
+			<th class="font-cozette sm bold">Sexe</th>
+			<th class="font-cozette xs bold" style="width: 100%">
+				{% if pet['race'] == 'Homme' %}
+					Mâle
+				{% else %}
+					Femelle
+				{% endif %}
+			</th>
+		</tr>
+		<tr class="w-full border-b whitespace-nowrap">
+			<th class="font-cozette sm bold">Race</th>
+			<th class="font-cozette xs bold" style="width: 100%"> {{ pet['race'] }} </th>
+		</tr>
+		<tr class="w-full border-b whitespace-nowrap">
+			<th class="font-cozette sm bold">Taille</th>
+			<th class="font-cozette xs bold" style="width: 100%"> {{ pet['age'] }} ans </th>
+		</tr>
+		<tr class="w-full border-b whitespace-nowrap">
+			<th class="font-cozette sm bold">Couleur</th>
+			<th class="font-cozette xs bold" style="width: 100%"> {{ pet['age'] }} ans </th>
+		</tr>
+	</table>
+</div>
+{% endblock %}
+
+<!-- script content -->
+{% block script %}
+	<script type="module" async>
+		import {findPage} from "/static/js/wiki.js";
+		console.log({{ pet }});
+		const elem = document.getElementById("pet-img-{{ pet['id'] }}");
+		const data = findPage(["{{ pet['espece'] }}", "{{ pet['race'] }}"]).then(data =>{
+			if (data) {
+				console.log(data);
+				elem.src = data.originalimage?.source;
+			}
+			else {
+				elem.src = "https://via.placeholder.com/150";
+			}
+		});
+	</script>
+{% endblock %}
