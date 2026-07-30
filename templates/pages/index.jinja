@@ -7,42 +7,41 @@
 <!-- block content -->
 {% block content %}
 <div class="flex flex-col items-center justify-center gap-4">
-    {% import 'macro/cards.jinja' as cards %}
 
-		<!-- search bar -->
-		<div class="relative flex items-center justify-center w-full">
-			<label for="search" class="absolute left-2">
-				<svg
-					class="w-6 h-6 text-white"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-					></path>
-				</svg>
-			</label>
-			<input
-				type="text"
-				class="w-full h-12 px-4 py-2 pl-10 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 shadow-lg cursor-pointer"
-				placeholder="Rechercher un animal"
-			/>
-			<!-- dropdown items search-->
-		</div>
+	<!-- search bar -->
+	<form id="search-pet-form" class="relative flex flex-col items-center justify-center w-full">
+		<label for="searchInput" class="absolute left-2">
+			<svg
+				class="w-6 h-6 text-white"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+				></path>
+			</svg>
+		</label>
+		<input
+			id="searchInput"
+			name="searchInput"
+			type="text"
+			class="w-full h-12 px-4 py-2 pl-10 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 shadow-lg cursor-pointer"
+			placeholder="Rechercher un animal"
+		/>
+	</form>
 
-	<div id="pet-container" class="grid grid-cols-2 row-span-full gap-[4rem] justify-center m-auto">
-	{% for pet in pets %}
-		{{ cards.pet_display(pet) }}
-	{% endfor %}
+	<div>
+		{% include 'html/pet-cards.jinja' %}
 	</div>
 </div>
 {% endblock %}
 
 <!-- script content -->
 {% block script %}
+<script type="module" src="{{ url_for('static', filename='js/searchForm.js') }}"></script>
 {% endblock %}

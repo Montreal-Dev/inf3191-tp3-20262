@@ -63,6 +63,19 @@ class Database:
         else:
             return _build_animal(item)
 
+    def get_animal_search(self, param):
+        cursor = self.get_connection().cursor()
+        query = ("SELECT * "
+                 "from animaux "
+                 "WHERE nom like '%' || ? || '%' "
+                 "OR espece like '%' || ? || '%' "
+                 "OR race like '%' || ? || '%' "
+                 "ORDER BY nom, espece, race"
+        )
+        cursor.execute(query, (param, param, param))
+        all_data = cursor.fetchall() 
+        return [_build_animal(item) for item in all_data]
+
     def get_animal_random(self, amount):
         cursor = self.get_connection().cursor()
         query = ("SELECT * "

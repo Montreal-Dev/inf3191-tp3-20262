@@ -1,0 +1,7 @@
+{% import 'macro/cards.jinja' as cards %}
+
+<template id="pet-card-template">
+    {{ cards.pet_display(pet=[]) }}
+</template>
+
+<div id="pet-cards" class="grid grid-cols-2 row-span-full gap-[4rem] justify-center m-auto"></div>

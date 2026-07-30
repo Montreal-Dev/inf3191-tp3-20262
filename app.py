@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-from flask import Flask, jsonify, render_template, g
+from flask import Flask, request, jsonify, render_template, g
 from .database import Database
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
@@ -32,18 +32,22 @@ def close_connection(exception):
         db.disconnect()
 
 # Front-end
-@app.route('/', defaults={'pets': []})
-def catch_all(pets):
-    db = get_db()
-    pets = db.get_animal_random(5)
-    return render_template('pages/index.jinja', pets=pets)
+@app.route('/')
+def catch_all():
+    return render_template('pages/index.jinja')
 
 # Back-end
 @app.route('/api/v1/animals', methods=['GET'])
 def get_animals():
+    query = request.args.get('q', default = '', type = str)
+    limit = request.args.get('limit', default = 5, type = int)
     db = get_db()
-    animals = db.get_animaux()
-    return jsonify(animals)
+    pets = []
+    if query:
+        pets = db.get_animal_search(query)
+    else:
+        pets = db.get_animal_random(limit)
+    return jsonify(pets)
 
 @app.route('/api/v1/animals/<int:animal_id>', methods=['GET'])
 def get_animal(animal_id):
