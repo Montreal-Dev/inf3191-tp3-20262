@@ -35,7 +35,7 @@ def close_connection(exception):
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    return render_template('index.html', path=path)
+    return render_template('pages/index.jinja', path=path)
 
 # Back-end
 @app.route('/api/v1/animals', methods=['GET'])
