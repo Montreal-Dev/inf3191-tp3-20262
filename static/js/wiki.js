@@ -6,16 +6,25 @@ const SEARCH_URL = (title) =>
 
 async function searchWiki(args) {
 	let res = [];
-	if (args[1] && args[1].toLowerCase() !== "inconnu") {
-		const url = SEARCH_URL(args.join(" "));
+	if (args[1] && args[1].toLowerCase() != "inconnu") {
+		const url = SEARCH_URL(`${args[1]} (${args[0]})`);
 		res = await fetch(url)
 			.then((res) => res.json())
 			.then((data) => {
 				return data?.pages ?? [];
 			});
+
+		if (res.length == 0) {
+			const url = SEARCH_URL(args[1]);
+			res = await fetch(url)
+				.then((res) => res.json())
+				.then((data) => {
+					return data?.pages ?? [];
+				});
+		}
 	}
 
-	if (res.length === 0 && args[0]) {
+	if (res.length == 0 && args[0]) {
 		const url = SEARCH_URL(args[0]);
 		res = await fetch(url)
 			.then((res) => res.json())
