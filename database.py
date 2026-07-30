@@ -63,6 +63,16 @@ class Database:
         else:
             return _build_animal(item)
 
+    def get_animal_random(self, amount):
+        cursor = self.get_connection().cursor()
+        query = ("SELECT * "
+                 "from animaux "
+                 "ORDER BY RANDOM() "
+                 "LIMIT ?")
+        cursor.execute(query, (amount,))
+        all_data = cursor.fetchall()
+        return [_build_animal(item) for item in all_data]
+    
     def add_animal(self, nom, espece, race, age, description, courriel,
                    adresse, ville, cp):
         connection = self.get_connection()

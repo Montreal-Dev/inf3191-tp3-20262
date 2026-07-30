@@ -32,10 +32,11 @@ def close_connection(exception):
         db.disconnect()
 
 # Front-end
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path):
-    return render_template('pages/index.jinja', path=path)
+@app.route('/', defaults={'pets': []})
+def catch_all(pets):
+    db = get_db()
+    pets = db.get_animal_random(5)
+    return render_template('pages/index.jinja', pets=pets)
 
 # Back-end
 @app.route('/api/v1/animals', methods=['GET'])
