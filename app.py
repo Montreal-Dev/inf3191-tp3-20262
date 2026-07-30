@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-from flask import Flask, request, jsonify, render_template, g
+from flask import Flask, redirect, request, jsonify, render_template, g, url_for
 from .database import Database
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
@@ -41,6 +41,12 @@ def get_pet(pet_id):
     db = get_db()
     pet = db.get_animal(pet_id)
     return render_template('pages/pet.jinja', pet=pet)
+
+@app.route('/discover')
+def discover():
+    db = get_db()
+    pets = db.get_animal_random(1)
+    return redirect(url_for('get_pet', pet_id=pets[0]['id']))
 
 # Back-end
 @app.route('/api/v1/animals', methods=['GET'])

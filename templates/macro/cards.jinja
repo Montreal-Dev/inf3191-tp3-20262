@@ -29,11 +29,17 @@
               {{ pet['description'] }}
             </p>
           </div>
-          <span  name="pet-card-age" class="text-xl font-black text-slate-900 whitespace-nowrap"></span>
-            {{ pet['age'] }} ans
-          </span>
+          <div class="flex flex-row gap-1 justify-center items-end">
+              <p name="pet-card-age" class="text-xl font-black text-slate-900 whitespace-nowrap">
+                {{ pet['age'] }}
+              </p>
+              <span class="text-xs font-bold text-slate-400 uppercase py-1">ans</span>
+          </div>
+
         </div>
-        <button name="pet-card-button" data-pet-id="{{ pet['id'] }}" onclick="location.href = '/pet/' + event.target.dataset.petId"class=" h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4">Voir plus ></a>
+        <button name="pet-card-button" data-pet-id="{{ pet['id'] }}" onclick="location.href = '/pet/' + event.target.dataset.petId"class=" h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4">
+          En voir plus 
+        </button>
       </div>
     </div>
   </div>

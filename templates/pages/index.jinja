@@ -6,8 +6,13 @@
 
 <!-- block content -->
 {% block content %}
+<div class="flex flex-row items-center justify-center gap-4 w-full">
+	<button 
+		onclick="location.href = '/discover'"
+		class="h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4"> < Decouvertes </button>
+	<button class="h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4"> Mettre en adoption > </button>
+</div>
 <div class="flex flex-col items-center justify-center gap-4">
-
 	<!-- search bar -->
 	<form id="search-pet-form" class="relative flex flex-col items-center justify-center w-full">
 		<label for="searchInput" class="absolute left-2">
