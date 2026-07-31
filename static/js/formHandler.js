@@ -176,7 +176,11 @@ export class Form {
 	}
 
 	checkValidity() {
-		return Object.values(this.fields).every((field) => field.checkValidity());
+		return Object.values(this.fields).every((field) => {
+			field.triggerValidate();
+			field.triggerValidateAll();
+			return field.checkValidity();
+		});
 	}
 
 	// only check inputs in that fieldset step

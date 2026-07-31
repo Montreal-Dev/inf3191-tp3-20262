@@ -1,0 +1,40 @@
+<!-- extends base.html -->
+{% extends 'base.html' %}
+
+<!-- block title -->
+{% block title %} Home - PetFinder{% endblock %}
+
+<!-- block content -->
+{% block content %}
+<form id="mise-en-adoption-form" class="grid grid-cols-2 w-full gap-4">
+    <div>
+        <h1 class="text-2xl font-black text-slate-900 italic"> Profile </h1>
+        <p class="text-xs font-bold text-slate-400 uppercase mt-1"> ... </p>
+    </div>
+    <fieldset class="group w-full">
+        <div>
+            <label for="name" class="font-cozette sm">
+                Nom
+            </label>
+            <input
+                id="name"
+                name="name"
+                class="w-full border-2 border-slate-300 rounded-md p-2"
+                type="text"
+                required
+                placeholder="Nom"
+            />
+            <output
+                class="xs font-cozette ellipsis"
+                for="name"
+                style="height: 1em"
+            ></output>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}
+
+<!-- script content -->
+{% block script %}
+<script type="module" src="{{ url_for('static', filename='js/miseEnAdoptionForm.js') }}"></script>
+{% endblock %}

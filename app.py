@@ -48,6 +48,10 @@ def discover():
     pets = db.get_animal_random(1)
     return redirect(url_for('get_pet', pet_id=pets[0]['id']))
 
+@app.route('/mise_en_adoption_form')
+def mise_en_adoption_form():
+    return render_template('pages/mise_en_adoption_Form.jinja')
+
 # Back-end
 @app.route('/api/v1/animals', methods=['GET'])
 def get_animals():
