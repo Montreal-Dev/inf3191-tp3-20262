@@ -13,7 +13,7 @@
 
 <div class="relative gap-4 min-h-[50vh] max-h-[500px] rounded-t-4xl p-auto bg-white overflow-hidden border border-white animate-pulse p-1">
 	<img 
-	id="pet-img-{{ pet['id'] }}"
+	id="pet-img"
 	class="w-full h-full object-cover object-top opacity-0 transition-opacity duration-300 rounded-t-4xl"
 	src="{{ src }}" 
 	alt="{{ pet['nom'] }}"
@@ -66,13 +66,13 @@
 {% block script %}
 	<script type="module" async>
 		import {findPage} from "/static/js/wiki.js";
-		const elem = document.getElementById("pet-img-{{ pet['id'] }}");
+		const elem = document.getElementById("pet-img");
 		const data = findPage(["{{ pet['espece'] }}", "{{ pet['race'] }}"]).then(data =>{
-			if (data) {
+			if (data && data.originalimage) {
 				elem.src = data.originalimage?.source;
 			}
 			else {
-				elem.src = "https://via.placeholder.com/150";
+				elem.src = "/static/images/not-found.jpg";
 			}
 		});
 	</script>

@@ -44,10 +44,10 @@ function createCard(data) {
 	}
 	if (image != null) {
 		findPage([data.espece, data.race]).then((data) => {
-			if (data) {
+			if (data && data.originalimage) {
 				image.src = data.originalimage?.source;
 			} else {
-				image.src = "https://via.placeholder.com/150";
+				image.src = "static/images/not-found.jpg";
 			}
 		});
 	}

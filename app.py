@@ -86,4 +86,4 @@ def add_animal():
         data['ville'],
         data['cp']
     )
-    return jsonify(db.get_animal(commitedId))
+    return redirect(url_for('get_pet', pet_id=commitedId))
