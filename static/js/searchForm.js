@@ -18,7 +18,6 @@ function clearCards() {
 }
 
 function createCard(data) {
-	console.log(data, "data");
 	const fragment = CARD_TEMPLATE.content.cloneNode(true);
 	const card = fragment.querySelector("[name='pet-card']");
 	const nom = fragment.querySelector("[name='pet-card-nom']");
@@ -45,7 +44,6 @@ function createCard(data) {
 	}
 	if (image != null) {
 		findPage([data.espece, data.race]).then((data) => {
-			console.log(data);
 			if (data) {
 				image.src = data.originalimage?.source;
 			} else {

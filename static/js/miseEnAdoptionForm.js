@@ -36,7 +36,6 @@ const isMissing = (value, isPlural) => {
  * Length validation for fields
  */
 const isLength = (value, min, max) => {
-	console.log(value.length, min, max);
 	if (value.length < min || value.length > max) {
 		return VALIDATION_MESSAGES.invalidLength(min, max);
 	}
@@ -78,7 +77,6 @@ const isCanadianPostalCode = (value) => {
 };
 
 const doValidators = (value, validators) => {
-	console.log(value);
 	for (const validator of validators) {
 		const res = validator(value);
 		if (res) return res;

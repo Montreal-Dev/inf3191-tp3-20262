@@ -66,11 +66,9 @@
 {% block script %}
 	<script type="module" async>
 		import {findPage} from "/static/js/wiki.js";
-		console.log({{ pet }});
 		const elem = document.getElementById("pet-img-{{ pet['id'] }}");
 		const data = findPage(["{{ pet['espece'] }}", "{{ pet['race'] }}"]).then(data =>{
 			if (data) {
-				console.log(data);
 				elem.src = data.originalimage?.source;
 			}
 			else {
