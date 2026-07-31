@@ -9,12 +9,20 @@
 <form id="mise-en-adoption-form" class="grid grid-cols-2 w-full gap-4">
     <div>
         <h1 class="text-2xl font-black text-slate-900 italic"> Profile </h1>
-        <p class="text-xs font-bold text-slate-400 uppercase mt-1"> ... </p>
+        <p class="text-xs font-bold text-slate-400 mt-1">
+            Veuillez fournir le plus de renseignements possible sur votre animal. 
+            Ces informations nous permettront de mieux évaluer ses besoins et de lui trouver un foyer adapté.
+        </p>
     </div>
-    <fieldset class="group w-full">
+    <fieldset class="flex flex-col group w-full gap-4">
         <div>
-            <label for="name" class="font-cozette sm">
+            <label for="name" class="flex flex-row gap-2 items-center text-1xl">
                 Nom
+                    <output
+                    class="text-xs ellipsis text-red-500"
+                    for="name"
+                    style="height: 1em"
+                    ></output>
             </label>
             <input
                 id="name"
@@ -24,16 +32,168 @@
                 required
                 placeholder="Nom"
             />
-            <output
-                class="xs font-cozette ellipsis"
-                for="name"
-                style="height: 1em"
-            ></output>
+        </div>
+        <div>
+            <label for="age" class="flex flex-row gap-2 items-center text-1xl">
+                Age
+                    <output
+                    class="text-xs ellipsis text-red-500"
+                    for="age"
+                    style="height: 1em"
+                    ></output>
+            </label>
+            <input
+                id="age"
+                name="age"
+                class="w-full border-2 border-slate-300 rounded-md p-2"
+                type="text"
+                required
+                placeholder="Age"
+            />
+        </div>
+        <div>
+            <label for="espece" class="flex flex-row gap-2 items-center text-1xl">
+                Espèce
+                    <output
+                    class="text-xs ellipsis text-red-500"
+                    for="espece"
+                    style="height: 1em"
+                    ></output>
+            </label>
+            <input
+                id="espece"
+                name="espece"
+                class="w-full border-2 border-slate-300 rounded-md p-2"
+                type="text"
+                required
+                placeholder="Espèce"
+            />
+        </div>
+        <div>
+            <label for="race" class="flex flex-row gap-2 items-center text-1xl">
+                Race
+                    <output
+                    class="text-xs ellipsis text-red-500"
+                    for="race"
+                    style="height: 1em"
+                    ></output>
+            </label>
+            <input
+                id="race"
+                name="race"
+                class="w-full border-2 border-slate-300 rounded-md p-2"
+                type="text"
+                required
+                placeholder="Race"
+            />
+        </div>
+        <div>
+            <label for="description" class="flex flex-row gap-2 items-center text-1xl">
+                Description
+                    <output
+                    class="text-xs ellipsis text-red-500"
+                    for="description"
+                    style="height: 1em"
+                    ></output>
+            </label>
+            <textarea
+                id="description"
+                name="description"
+                class="w-full border-2 border-slate-300 rounded-md p-2"
+                required
+                placeholder="Description"
+            ></textarea>
         </div>
     </fieldset>
+    <hr class="border-t-2 border-slate-300 col-span-2" />
+    <div>
+        <h1 class="text-2xl font-black text-slate-900 italic"> Contact </h1>
+        <p class="text-xs font-bold text-slate-400 mt-1">
+            Veuillez inscrire vos coordonnées afin que notre équipe puisse communiquer avec vous.
+            Les renseignements fournis demeureront confidentiels et seront utilisés uniquement dans le cadre du traitement de votre dossier.
+        </p>
+    </div>
+    <fieldset class="flex flex-col group w-full gap-4">
+        <div>
+            <label for="courriel" class="flex flex-row gap-2 items-center text-1xl">
+                Courriel
+                    <output
+                    class="text-xs ellipsis text-red-500"
+                    for="courriel"
+                    style="height: 1em"
+                    ></output>
+            </label>
+            <input
+                id="courriel"
+                name="courriel"
+                class="w-full border-2 border-slate-300 rounded-md p-2"
+                type="text"
+                required
+                placeholder="Courriel"
+            />
+        </div>
+    </fieldset>
+    <fieldset class="flex flex-col group w-full gap-4 col-span-2">
+        <div>
+            <label for="adresse" class="flex flex-row gap-2 items-center text-1xl">
+                Adresse
+                    <output
+                    class="text-xs ellipsis text-red-500"
+                    for="adresse"
+                    style="height: 1em"
+                    ></output>
+            </label>
+            <input
+                id="adresse"
+                name="adresse"
+                class="w-full border-2 border-slate-300 rounded-md p-2"
+                type="text"
+                required
+                placeholder="Adresse"
+            />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label for="ville" class="flex flex-row gap-2 items-center text-1xl">
+                    Ville
+                        <output
+                        class="text-xs ellipsis text-red-500"
+                        for="ville"
+                        style="height: 1em"
+                        ></output>
+                </label>
+                <input
+                    id="ville"
+                    name="ville"
+                    class="w-full border-2 border-slate-300 rounded-md p-2"
+                    type="text"
+                    required
+                    placeholder="Ville"
+                />
+            </div>
+            <div>
+                <label for="cp" class="flex flex-row gap-2 items-center text-1xl">
+                    Code Postal
+                        <output
+                        class="text-xs ellipsis text-red-500"
+                        for="cp"
+                        style="height: 1em"
+                        ></output>
+                </label>
+                <input
+                    id="cp"
+                    name="cp"
+                    class="w-full border-2 border-slate-300 rounded-md p-2"
+                    type="text"
+                    required
+                    placeholder="Code Postal"
+                />
+            </div>
+        </div>
+    </fieldset>
+    <button class="col-span-2 h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4"> Envoyer </button>
 </form>
 {% endblock %}
-
 <!-- script content -->
 {% block script %}
 <script type="module" src="{{ url_for('static', filename='js/miseEnAdoptionForm.js') }}"></script>

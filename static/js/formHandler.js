@@ -176,9 +176,13 @@ export class Form {
 	}
 
 	checkValidity() {
-		return Object.values(this.fields).every((field) => {
+		// Trigger validation for all fields
+		Object.values(this.fields).forEach((field) => {
 			field.triggerValidate();
 			field.triggerValidateAll();
+		});
+		// Check validity for all fields
+		return Object.values(this.fields).every((field) => {
 			return field.checkValidity();
 		});
 	}
