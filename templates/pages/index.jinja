@@ -8,10 +8,10 @@
 {% block content %}
 <div class="flex flex-row items-center justify-center gap-4 w-full">
 	<button 
-		onclick="location.href = '/discover'"
+		onclick="location.href = '{{ url_for('discover') }}'"
 		class="h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4"> < Decouvertes </button>
 	<button 
-	onclick="location.href = '/mise_en_adoption_form'"
+	onclick="location.href = '{{ url_for('mise_en_adoption_form') }}'"
 	class="h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4"> Mettre en adoption > </button>
 </div>
 <div class="flex flex-col items-center justify-center gap-4">

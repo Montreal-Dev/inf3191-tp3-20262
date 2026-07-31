@@ -8,7 +8,7 @@
 {% block content %}
 <div class="flex flex-row items-center justify-between gap-4">
 	<h2 class="text-2xl font-black text-slate-900 italic">{{ pet['nom'] }}</h2>
-	<button onclick="location.href = '/'" class="h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4">Retour > </button>
+	<button onclick="location.href = '{{ url_for('index') }}'" class="h-14 px-4 py-2.5 bg-slate-900 text-white rounded-2xl font-black font-medium leading-5 uppercase shadow-lg active:scale-95 cursor-pointer mt-4">Retour > </button>
 </div>
 
 <div class="relative gap-4 min-h-[50vh] max-h-[500px] rounded-t-4xl p-auto bg-white overflow-hidden border border-white animate-pulse p-1">

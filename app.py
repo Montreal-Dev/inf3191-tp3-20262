@@ -33,7 +33,7 @@ def close_connection(exception):
 
 # Front-end
 @app.route('/')
-def catch_all():
+def index():
     return render_template('pages/index.jinja')
 
 @app.route('/pet/<int:pet_id>')
@@ -72,7 +72,7 @@ def get_animal(animal_id):
     return jsonify(animal)
 
 @app.route('/api/v1/animals', methods=['POST'])
-def update_animal():
+def add_animal():
     db = get_db()
     data = request.form
     commitedId = db.add_animal(
