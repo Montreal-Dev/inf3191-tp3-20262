@@ -70,3 +70,20 @@ def get_animal(animal_id):
     db = get_db()
     animal = db.get_animal(animal_id)
     return jsonify(animal)
+
+@app.route('/api/v1/animals', methods=['POST'])
+def update_animal():
+    db = get_db()
+    data = request.form
+    commitedId = db.add_animal(
+        data['nom'],
+        data['espece'],
+        data['race'],
+        data['age'],
+        data['description'],
+        data['courriel'],
+        data['adresse'],
+        data['ville'],
+        data['cp']
+    )
+    return jsonify(db.get_animal(commitedId))
