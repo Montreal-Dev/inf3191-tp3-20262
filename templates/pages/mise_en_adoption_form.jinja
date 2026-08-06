@@ -6,8 +6,8 @@
 
 <!-- block content -->
 {% block content %}
-<form id="mise-en-adoption-form" class="grid grid-cols-2 w-full gap-4" action="{{ url_for('add_animal') }}" method="post">
-    <div>
+<form id="mise-en-adoption-form" class="md:grid md:grid-cols-2 w-full gap-4" action="{{ url_for('add_animal') }}" method="post">
+    <div class="md:max-w-[350px] pb-4 md:pb-0">
         <h1 class="text-2xl font-black text-slate-900 italic"> Profile </h1>
         <p class="text-xs font-bold text-slate-400 mt-1">
             Veuillez fournir le plus de renseignements possible sur votre animal. 
@@ -106,7 +106,7 @@
         </div>
     </fieldset>
     <hr class="border-t-2 border-slate-300 col-span-2" />
-    <div>
+    <div class="md:max-w-[350px] pb-4 md:pb-0">
         <h1 class="text-2xl font-black text-slate-900 italic"> Contact </h1>
         <p class="text-xs font-bold text-slate-400 mt-1">
             Veuillez inscrire vos coordonnées afin que notre équipe puisse communiquer avec vous.
